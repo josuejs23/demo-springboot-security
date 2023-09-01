@@ -46,7 +46,9 @@ public class SecurityConfiguration {
                         //This url comes free by Spring boot
                         .loginProcessingUrl("/authenticateTheUser")
                         .permitAll()
-        );
+        )
+        .logout( logout -> logout.permitAll())
+        ;
         return http.build();
     }
 }
