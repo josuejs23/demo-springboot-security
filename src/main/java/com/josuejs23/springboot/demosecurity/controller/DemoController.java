@@ -10,4 +10,15 @@ public class DemoController {
     public String sayHello(){
         return "home";
     }
+
+    @GetMapping("/leaders/**")
+    public String leadersPage(){ return "leaders"; }
+
+    @GetMapping("/system/**")
+    public String systemPage(){ return "system"; }
+
+    @GetMapping("/access-denied")
+    public String showAccessDenied(){
+        return "access-denied";
+    }
 }

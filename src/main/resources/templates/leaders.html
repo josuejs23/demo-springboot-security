@@ -8,14 +8,12 @@
     <title>Title</title>
 </head>
 <body>
-  <h1>Hello!!!</h1>
+  <h1>Leaders</h1>
   User : <span sec:authentication="principal.username"></span>
   <br>
   Roles : <span sec:authentication="principal.authorities"></span>
   <form action="#" th:action="@{/logout}" method="POST">
     <input type="submit" value="logout"/>
   </form>
-    <a th:href="@{/leaders}">Leaders only</a>
-    <a th:href="@{/system}">Admin only</a>
 </body>
 </html>
