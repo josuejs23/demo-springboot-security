@@ -3,15 +3,16 @@ package com.josuejs23.springboot.demosecurity.security;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.core.userdetails.User;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.provisioning.InMemoryUserDetailsManager;
+import org.springframework.security.provisioning.JdbcUserDetailsManager;
+import org.springframework.security.provisioning.UserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
+
+import javax.sql.DataSource;
 
 @Configuration
 public class SecurityConfiguration {
 
-    @Bean
+   /* @Bean
     public InMemoryUserDetailsManager userDetailsManager(){
         UserDetails josue =  User.builder()
                 .username("josue")
@@ -32,6 +33,11 @@ public class SecurityConfiguration {
                 .build();
 
         return new InMemoryUserDetailsManager(josue, lili, juan);
+    }*/
+
+    @Bean
+    public UserDetailsManager userDetailsManager(DataSource dataSource){
+        return new JdbcUserDetailsManager(dataSource);
     }
 
     // This is to add a custom form login
